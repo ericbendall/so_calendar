@@ -45,13 +45,7 @@ var SoCalendar = React.createClass({
     };
   },
 
-  renderDay: function(dayOfWeek, position) {
-    return <span className={position + ' dayCell'}>
-      <Day dayOfWeek={dayOfWeek} />
-    </span>;
-  },
-
-  renderDay2: function(calendarIdx, position) {
+  renderDay: function(calendarIdx, position) {
     var weekIdx = Math.floor(calendarIdx / 7);
     var dayIdx = calendarIdx % 7;
     var label = DayOfWeek[dayIdx] + ': ' + this.props.month[weekIdx][dayIdx].label;
@@ -65,11 +59,11 @@ var SoCalendar = React.createClass({
 
     return <div className="so-calendar">
       <div className="calendar">
-          {this.renderDay2(this.props.calendarIdx - 7, "top center")}
-          {this.renderDay2(this.props.calendarIdx - 1, "middle left")}
-          {this.renderDay2(this.props.calendarIdx, "middle center")}
-          {this.renderDay2(this.props.calendarIdx + 1 , "middle right")}
-          {this.renderDay2(this.props.calendarIdx + 7, "bottom center")}
+          {this.renderDay(this.props.calendarIdx - 7, "top center")}
+          {this.renderDay(this.props.calendarIdx - 1, "middle left")}
+          {this.renderDay(this.props.calendarIdx, "middle center")}
+          {this.renderDay(this.props.calendarIdx + 1 , "middle right")}
+          {this.renderDay(this.props.calendarIdx + 7, "bottom center")}
       </div>
     </div>
   },
