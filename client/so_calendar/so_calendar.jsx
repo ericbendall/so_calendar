@@ -68,11 +68,11 @@ var SoCalendar = React.createClass({
   render : function(){
     // {this.renderDay(this.state.calendarIdx - 7, "top center")}
     // {this.renderDay(this.state.calendarIdx + 7, "bottom center")}
+    // {this.renderDay(this.state.calendarIdx - 1, "middle left")}
+    // {this.renderDay(this.state.calendarIdx + 1 , "middle right")}
     return <div className="so-calendar">
       <div className="calendar">
-          {this.renderDay(this.state.calendarIdx - 1, "middle left")}
           {this.renderDay(this.state.calendarIdx, "middle center")}
-          {this.renderDay(this.state.calendarIdx + 1 , "middle right")}
       </div>
     </div>
   },
