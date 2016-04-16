@@ -59,10 +59,9 @@ var SoCalendar = React.createClass({
   renderDay: function(calendarIdx, position) {
     var weekIdx = Math.floor(calendarIdx / 7);
     var dayIdx = calendarIdx % 7;
-    var label = Store.getDayOfWeek(dayIdx) + ': ' + this.state.month[weekIdx][dayIdx].label;
     var key = this.state.month[weekIdx][dayIdx].id;
     return <span key={key} className={position + ' dayCell'}>
-      <Day dayOfWeek={label} />
+      <Day day={this.state.month[weekIdx][dayIdx]} blockingNSFW={true} />
     </span>;
   },
 

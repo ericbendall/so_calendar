@@ -14,6 +14,8 @@ var createMonth = function(monthName, numDays, weekStart) {
       day.label = 'Blank';
     } else {
       day.label = monthName + ' ' + (ix + 1 - weekStart);
+      day.note = 'Here is something really super nice to say to you. N\'awwwww.';
+      day.isNSFW = (ix % 3) === 0;
     }
     month[curWeekIx].push(day);
   }
