@@ -1,0 +1,26 @@
+{
+  "collections": {
+    "calendars": [
+      {
+        "name" : "string",
+        "forId": "userId(string)",
+        "creatorId": "userId(string)",
+        "year": "number",
+        "dayNotes" : [
+          {
+            "note" : "string(text)",
+            "nsfw": "boolean"
+          }
+        ]
+      }
+    ],
+    "users" : [
+      {
+        "userId" : "string?",
+        "username" : "string",
+        "email" : "string",
+        "password" : "string?salted?"
+      }
+    ]
+  }
+}
