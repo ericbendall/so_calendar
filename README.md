@@ -10,7 +10,7 @@
 - [x] turn that data into a UI consummable list (just a list for now, the grid will introduce crazy edge cases)
 - [x] Create Garbage UI
 - [x] Create ability to move from one cell to another
-- [ ] Majestic UI
+- [x] Majestic UI
 - [ ] Animations
 - [ ] Deploy with fake data
 - [ ] Authentication

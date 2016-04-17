@@ -10,31 +10,36 @@ html, body, #reactContainer, .so-calendar{
 }
 
 .calendar {
-  height: 600px;
-  width: 600px;
+  height: 604px; // 600px + border I think
+  width: 800px;
+  overflow: hidden;
   //margin: @calendar-padding;
   margin: auto;
   position: relative;
 }
 
 .dayCell {
-  width: 100%;
-  height: 100%;
+  width: 600px;
+  height: 600px;
   display: inline-block;
   position: absolute;
 /*
   &.left {
-    left: 0%;
+    left: ~"calc(50% - 600px)";
+    transform: ~"translate(-50%, 0%)";
   }
 
   &.center {
-    left: 33%;
+    left: 50%;
+    transform: ~"translate(-50%, 0%)";
   }
 
   &.right {
-    left: 66%;
+    left: 50%;
+    transform: ~"translate(50%, 0%)";
   }
-
+*/
+  /*
   &.top {
     top: 0%;
   }
@@ -45,6 +50,5 @@ html, body, #reactContainer, .so-calendar{
 
   &.bottom {
     top: 66%
-  }
-  */
+  }*/
 }

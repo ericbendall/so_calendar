@@ -1,4 +1,5 @@
 var React = require('react');
+var tweenState = require('react-tween-state');
 
 var Store = require('so_calendar/store.js');
 var Actions = require('so_calendar/actions.js');
@@ -6,15 +7,19 @@ var getIsBrowser = require('so_calendar/getIsBrowser.js');
 
 var Day = require('./day/day.jsx');
 
+var DAY_SIZE_PX = 600;
+var CALENDAR_SIZE_PX = 800;
+var DAY_MARGIN_PX = 10;
 
 var SoCalendar = React.createClass({
-  mixins : [Store.mixin()],
+  mixins : [Store.mixin(), tweenState.Mixin],
 
   getInitialState: function() {
     return {
       calendar: Store.getState().calendar,
       calendarIdx: Store.getState().calendarIdx,
-      lastIdx: Store.getState().lastIdx
+      lastIdx: Store.getState().lastIdx,
+      offset: 0,
     };
   },
 
@@ -27,6 +32,24 @@ var SoCalendar = React.createClass({
     });
   },
 
+  _switchDay: function(isRight) {
+    var idx = this.state.calendarIdx;
+    if ( (idx === 0 && !isRight) || (this.state.calendar.days.length <= idx && isRight)) {
+      return;
+    }
+
+    Actions.setCalendarIdx( isRight ? idx + 1 : idx - 1 );
+
+    var maxOffset = DAY_SIZE_PX + DAY_MARGIN_PX;
+    this.tweenState('offset', {
+      easing: tweenState.easingTypes.easeInOutQuad,
+      duration: 500,
+      beginValue: isRight ? maxOffset : 0 - maxOffset,
+      endValue: 0
+    });
+
+  },
+
   componentDidMount: function(args) {
     var self = this;
     Actions.init();
@@ -37,12 +60,14 @@ var SoCalendar = React.createClass({
           var handled = false;
           switch(args.keyCode) {
             case 37: // ArrowLeft
-              Actions.setCalendarIdx(self.state.calendarIdx - 1);
+              //Actions.setCalendarIdx(self.state.calendarIdx - 1);
+              self._switchDay(false);
               handled = true;
               break;
 
             case 39: // 'ArrowRight'
-              Actions.setCalendarIdx(self.state.calendarIdx + 1);
+              //Actions.setCalendarIdx(self.state.calendarIdx + 1);
+              self._switchDay(true);
               handled = true;
               break;
 
@@ -55,12 +80,24 @@ var SoCalendar = React.createClass({
     } catch (e) {
       ; // Do nothing, just eat the error
     }
-
   },
 
-  renderDay: function(calendarIdx, position) {
+  renderDay: function(calendarIdx, dayOffset) {
     var key = 'day-' + calendarIdx;
-    return <span key={key} className={position + ' dayCell'}>
+    var days = this.state.calendar.days;
+    var tweenOffset = this.getTweeningValue('offset');
+    var left = (CALENDAR_SIZE_PX / 2) - (DAY_SIZE_PX /2); // center's left with no offset
+
+    left += dayOffset + tweenOffset;
+    if (calendarIdx < 0 || calendarIdx >= days.length) {
+      return;
+    }
+
+    var style = {
+      left: left + 'px'
+    };
+
+    return <span key={key} className='dayCell' style={style}>
       <Day day={this.state.calendar.days[calendarIdx]} blockingNSFW={true} />
     </span>;
   },
@@ -68,11 +105,14 @@ var SoCalendar = React.createClass({
   render : function(){
     // {this.renderDay(this.state.calendarIdx - 7, "top center")}
     // {this.renderDay(this.state.calendarIdx + 7, "bottom center")}
-    // {this.renderDay(this.state.calendarIdx - 1, "middle left")}
-    // {this.renderDay(this.state.calendarIdx + 1 , "middle right")}
+    var dayCellOffset = DAY_SIZE_PX + DAY_MARGIN_PX;
     return <div className="so-calendar">
       <div className="calendar">
-          {this.renderDay(this.state.calendarIdx, "middle center")}
+          {this.renderDay(this.state.calendarIdx - 2, -2 * dayCellOffset)}
+          {this.renderDay(this.state.calendarIdx - 1, -1 * dayCellOffset)}
+          {this.renderDay(this.state.calendarIdx, 0)}
+          {this.renderDay(this.state.calendarIdx + 1 , dayCellOffset)}
+          {this.renderDay(this.state.calendarIdx + 1 , 2 * dayCellOffset)}
       </div>
     </div>
   },
