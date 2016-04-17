@@ -112,7 +112,7 @@ var SoCalendar = React.createClass({
           {this.renderDay(this.state.calendarIdx - 1, -1 * dayCellOffset)}
           {this.renderDay(this.state.calendarIdx, 0)}
           {this.renderDay(this.state.calendarIdx + 1 , dayCellOffset)}
-          {this.renderDay(this.state.calendarIdx + 1 , 2 * dayCellOffset)}
+          {this.renderDay(this.state.calendarIdx + 2 , 2 * dayCellOffset)}
       </div>
     </div>
   },
