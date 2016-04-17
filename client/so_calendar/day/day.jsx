@@ -23,7 +23,9 @@ var Day = React.createClass({
           {day.label}
         </div>
         <div className="day__note">
-          {blockedNSFW ? 'NSFW. Log in to view' : day.note}
+          <div className="day__note-content">
+            {blockedNSFW ? 'NSFW. Log in to view' : day.note}
+          </div>
         </div>
       </div>
     </div>

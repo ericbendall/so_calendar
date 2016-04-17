@@ -13,7 +13,7 @@ var Calendar = function(json) {
     // TODO: Optimize this a bit better maybe?
     var mDay = moment(json.year + '-01-01').add(idx, 'days');
     return {
-      label: mDay.format('ddd MMMM Do'),
+      label: mDay.format('dddd, MMMM Do'),
       note: dayNote.note,
       isNSFW: dayNote.nsfw
     };

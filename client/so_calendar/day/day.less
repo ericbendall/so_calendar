@@ -4,6 +4,7 @@
   background-color: #FFECDD;
   color: #5E4B56;
   border: 2px solid #A690A4;
+  border-radius: 15px;
 
   &--nsfw-blocked {
     background-color: #FCB5B5;
@@ -11,10 +12,21 @@
 
   &__content {
     padding: 10px;
+    height: 100%;
+  }
+
+  &__note {
+    //display: flex;
+    //flex-direction: column;
+    //height: ~"calc(100% - 100px)";
+    //justify-content: center;
+    font-size: 26px;
+    font-family: Handlee;
   }
 
   &__label {
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 100px;
   }
 }

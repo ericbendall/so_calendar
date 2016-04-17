@@ -7,7 +7,7 @@
 # Iteration 1
 - [x] Create mongo DB database and get the store drawing from it
 - [x] Populate database with some data, essentially create some sort of seeding mechanism
-- [ ] turn that data into a UI consummable list (just a list for now, the grid will introduce crazy edge cases)
+- [x] turn that data into a UI consummable list (just a list for now, the grid will introduce crazy edge cases)
 - [x] Create Garbage UI
 - [x] Create ability to move from one cell to another
 - [ ] Majestic UI
