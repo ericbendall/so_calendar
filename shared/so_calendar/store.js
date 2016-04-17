@@ -6,9 +6,9 @@ var Calendar = require('so_calendar/calendar');
 
 //Put the initial state of your State here
 var State = {
-  currentMonth: Calendar.createMonth('March', 31, 1),
-  calendarIdx: 15,
-  lastIdx: 14
+  calendar: new Calendar(),
+  calendarIdx: 0,
+  lastIdx: 0
 };
 
 var Store = flux.createStore({
@@ -16,8 +16,9 @@ var Store = flux.createStore({
     fetch('api/calendar')
       .then((result) => result.json())
       .then((result) =>{
-        console.log(result, null, 2);
-        return result;
+        State.calendar = new Calendar(result);
+        this.emitChange();
+        return State.calendar;
       });
   },
 
@@ -28,10 +29,6 @@ var Store = flux.createStore({
 },{
   getState : function(){
     return State;
-  },
-
-  getDayOfWeek: function(dayIdx) {
-    return Calendar.DaysOfWeek[dayIdx]
   }
 });
 

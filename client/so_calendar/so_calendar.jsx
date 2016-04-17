@@ -12,7 +12,7 @@ var SoCalendar = React.createClass({
 
   getInitialState: function() {
     return {
-      month: Store.getState().currentMonth,
+      calendar: Store.getState().calendar,
       calendarIdx: Store.getState().calendarIdx,
       lastIdx: Store.getState().lastIdx
     };
@@ -21,7 +21,7 @@ var SoCalendar = React.createClass({
   onStoreChange : function(){
     //localStorage.setItem('test', JSON.stringify(Store.getState()));
     this.setState({
-      month: Store.getState().currentMonth,
+      calendar: Store.getState().calendar,
       calendarIdx: Store.getState().calendarIdx,
       lastIdx: Store.getState().lastIdx
     });
@@ -59,11 +59,9 @@ var SoCalendar = React.createClass({
   },
 
   renderDay: function(calendarIdx, position) {
-    var weekIdx = Math.floor(calendarIdx / 7);
-    var dayIdx = calendarIdx % 7;
-    var key = this.state.month[weekIdx][dayIdx].id;
+    var key = 'day-' + calendarIdx;
     return <span key={key} className={position + ' dayCell'}>
-      <Day day={this.state.month[weekIdx][dayIdx]} blockingNSFW={true} />
+      <Day day={this.state.calendar.days[calendarIdx]} blockingNSFW={true} />
     </span>;
   },
 

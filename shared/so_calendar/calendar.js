@@ -1,39 +1,27 @@
-var createMonth = function(monthName, numDays, weekStart) {
-  var month = [[]];
-  var curWeekIx = 0;
+var _ = require('lodash');
+var moment = require('moment');
 
-  var gridSize = (numDays + weekStart) + (7 - ((numDays + weekStart)%7));
-  for (var ix = 0; ix < gridSize; ix ++) {
-    if (month[curWeekIx].length === 7) {
-      curWeekIx++;
-      month.push([]);
-    }
+var Calendar = function(json) {
+  this.name =  '',
+  this.days = [{label: '', isNSFW: false, note: ''}];
 
-    var day = {id: ix};
-    if (ix < weekStart || ix >= weekStart + numDays){
-      day.label = 'Blank';
-    } else {
-      day.label = monthName + ' ' + (ix + 1 - weekStart);
-      day.note = 'Here is something really super nice to say to you. N\'awwwww.';
-      day.isNSFW = (ix % 3) === 0;
-    }
-    month[curWeekIx].push(day);
+  if (!json || !_.isArray(json.dayNotes) || !_.isNumber(json.year)) {
+    return this;
   }
 
-  return month;
-};
+  var days = _.map(json.dayNotes, (dayNote, idx) => {
+    // TODO: Optimize this a bit better maybe?
+    var mDay = moment(json.year + '-01-01').add(idx, 'days');
+    return {
+      label: mDay.format('ddd MMMM Do'),
+      note: dayNote.note,
+      isNSFW: dayNote.nsfw
+    };
+  });
 
-var DaysOfWeek = [
-  "Monday",
-  "Tueday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday"
-];
-
-module.exports = {
-  createMonth: createMonth,
-  DaysOfWeek: DaysOfWeek
+  this.days = days;
+  this.name = json.name || "Untitled Calendar";
+  return this;
 }
+
+module.exports = Calendar;
