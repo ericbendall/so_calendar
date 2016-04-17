@@ -13,7 +13,12 @@ var State = {
 
 var Store = flux.createStore({
   INIT : function(){
-
+    fetch('api/calendar')
+      .then((result) => result.json())
+      .then((result) =>{
+        console.log(result, null, 2);
+        return result;
+      });
   },
 
   SET_CALENDAR_IDX: function(args) {

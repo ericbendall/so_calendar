@@ -6,7 +6,8 @@ var express = require("express");
 var app = express();
 var fs = require('fs');
 var mongoose = require('mongoose');
-var seeder = require('./server/seed.js');
+
+var Calendar = require('./server/models/calendar.js');
 
 // Set up mongo db connection
 mongoose.connect('mongodb://localhost/so_calendar');
@@ -18,6 +19,21 @@ db.once('open', function() {
 
 // Static Assets
 app.use(express.static(__dirname + '/build'));
+
+// APi
+app.get('/api/calendar', function(req, res){
+  Calendar.findOne({forId: 't', creatorId: 'e'}, function (err, calendar) {
+    if (err) {
+      res.sendStatus(404);
+    }
+
+    try {
+      res.send(calendar);
+    } catch (e) {
+      res.sendStatus(500);
+    }
+  });
+});
 
 // Fall back on index
 app.get('*', function (req, res) {

@@ -29,6 +29,8 @@ var SoCalendar = React.createClass({
 
   componentDidMount: function(args) {
     var self = this;
+    Actions.init();
+
     try {
       if (getIsBrowser() && window) {
         window.onkeyup = function(args) {
