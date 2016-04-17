@@ -7,10 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-
   "author": "Eric Bendall",
   "license": "ISC",
-
   "dependencies": {
     "app-module-path": "^1.0.6",
     "classnames": "^2.2.3",
@@ -19,11 +17,11 @@
     "isomorphic-fetch": "^2.2.0",
     "lodash": "^4.6.1",
     "moment": "^2.12.0",
+    "mongoose": "^4.4.0",
     "pico-flux": "^1.1.0",
     "pico-router": "^1.1.0",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "vitreum": "^3.1.3"
-
   }
 }

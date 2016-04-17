@@ -1,5 +1,7 @@
 var vitreumTasks = require("vitreum/tasks");
 var gulp = require("gulp");
+var seed = require('./server/seed.js');
+
 
 var gulp = vitreumTasks(gulp, {
   entryPoints: ["./client/so_calendar"],
@@ -30,4 +32,8 @@ var gulp = vitreumTasks(gulp, {
   clientLibs: [
 
   ],
+});
+
+gulp.task('seed', function(){
+  return seed();
 });
