@@ -1,6 +1,8 @@
 # SO Calendar
 
-## A cute way tell your significant other why you like them everyday
+A cute way tell your significant other why you like them everyday.
+
+Heavily under development. Don't judge me yet.
 
 #TODOS:
 
@@ -11,7 +13,7 @@
 - [x] Create Garbage UI
 - [x] Create ability to move from one cell to another
 - [x] Majestic UI
-- [ ] Animations
+- [x] Animations
 - [ ] Deploy with fake data
 - [ ] Authentication
 - [ ] Deploy Auth, test
