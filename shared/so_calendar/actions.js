@@ -8,6 +8,14 @@ var Actions = {
 
   setCalendarIdx: function(newCalendarIdx) {
     dispatch('SET_CALENDAR_IDX', newCalendarIdx);
+  },
+
+  setBeginning: function() {
+    dispatch('SET_CALENDAR_IDX', 0);
+  },
+
+  setEnd: function() {
+    dispatch('SET_CALENDAR_END');
   }
 };
 

@@ -1,4 +1,4 @@
-html, body, #reactContainer, .so-calendar{
+  html, body, #reactContainer, .so-calendar{
   height : 100%;
   box-sizing: border-box;
   font-family: Lato;
@@ -7,6 +7,9 @@ html, body, #reactContainer, .so-calendar{
 
 .so-calendar {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .calendar {
@@ -14,8 +17,17 @@ html, body, #reactContainer, .so-calendar{
   width: 800px;
   overflow: hidden;
   //margin: @calendar-padding;
-  margin: auto;
   position: relative;
+}
+
+.controls {
+  margin: 20px 0px;
+}
+
+.direction-btn {
+  margin: 0px 20px;
+  height: 50px;
+  width: 50px;
 }
 
 .dayCell {

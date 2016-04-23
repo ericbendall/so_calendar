@@ -102,7 +102,31 @@ var SoCalendar = React.createClass({
     </span>;
   },
 
+  _handleDirection: function(direction) {
+    switch(direction) {
+      case 'double-left':
+        Actions.setBeginning();
+        break;
+
+      case 'left':
+        this._switchDay(false);
+        break;
+
+      case 'right':
+        this._switchDay(true);
+        break;
+
+      case 'double-right':
+        Actions.setEnd();
+        break;
+    }
+  },
+
   render : function(){
+    var createButtonHandler = (direction) => {
+      return () => {this._handleDirection(direction)};
+    };
+
     // {this.renderDay(this.state.calendarIdx - 7, "top center")}
     // {this.renderDay(this.state.calendarIdx + 7, "bottom center")}
     var dayCellOffset = DAY_SIZE_PX + DAY_MARGIN_PX;
@@ -113,6 +137,13 @@ var SoCalendar = React.createClass({
           {this.renderDay(this.state.calendarIdx, 0)}
           {this.renderDay(this.state.calendarIdx + 1 , dayCellOffset)}
           {this.renderDay(this.state.calendarIdx + 2 , 2 * dayCellOffset)}
+      </div>
+
+      <div className="controls">
+        <span className="direction-btn fa fa-5x fa-angle-double-left" onClick={createButtonHandler('double-left')} />
+        <span className="direction-btn fa fa-5x fa-angle-left" onClick={createButtonHandler('left')} />
+        <span className="direction-btn fa fa-5x fa-angle-right" onClick={createButtonHandler('right')} />
+        <span className="direction-btn fa fa-5x fa-angle-double-right" onClick={createButtonHandler('double-right')} />
       </div>
     </div>
   },

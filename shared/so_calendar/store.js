@@ -24,8 +24,11 @@ var Store = flux.createStore({
 
   SET_CALENDAR_IDX: function(args) {
     State.calendarIdx = args;
-  }
+  },
 
+  SET_CALENDAR_END: function() {
+    State.calendarIdx = State.calendar.days.length ? State.calendar.days.length - 1 : 0;
+  }
 },{
   getState : function(){
     return State;
