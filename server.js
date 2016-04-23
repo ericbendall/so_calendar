@@ -10,11 +10,11 @@ var mongoose = require('mongoose');
 var Calendar = require('./server/models/calendar.js');
 
 // Set up mongo db connection
-mongoose.connect('mongodb://localhost/so_calendar');
+mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error:'));
 db.once('open', function() {
-  // Do something
+  console.log('Mongo DB connected');
 });
 
 // Static Assets

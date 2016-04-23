@@ -9,7 +9,8 @@ var seed = function() {
   return new Promise (function(resolve, reject){
     // Set up mongo db connection
     try {
-      mongoose.connect('mongodb://localhost/so_calendar');
+      // process.env.TIMES = 'mongodb://localhost/so_calendar'
+      mongoose.connect(process.env.MONGODB_URI);
       var db = mongoose.connection;
       db.on('error', reject);
       db.once('open', function() {
