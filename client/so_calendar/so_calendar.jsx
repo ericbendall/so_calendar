@@ -18,7 +18,6 @@ var SoCalendar = React.createClass({
     return {
       calendar: Store.getState().calendar,
       calendarIdx: Store.getState().calendarIdx,
-      lastIdx: Store.getState().lastIdx,
       offset: 0,
     };
   },
@@ -28,7 +27,6 @@ var SoCalendar = React.createClass({
     this.setState({
       calendar: Store.getState().calendar,
       calendarIdx: Store.getState().calendarIdx,
-      lastIdx: Store.getState().lastIdx
     });
   },
 
@@ -47,7 +45,26 @@ var SoCalendar = React.createClass({
       beginValue: isRight ? maxOffset : 0 - maxOffset,
       endValue: 0
     });
+  },
 
+  _handleDirection: function(direction) {
+    switch(direction) {
+      case 'double-left':
+        Actions.setBeginning();
+        break;
+
+      case 'left':
+        this._switchDay(false);
+        break;
+
+      case 'right':
+        this._switchDay(true);
+        break;
+
+      case 'double-right':
+        Actions.setEnd();
+        break;
+    }
   },
 
   componentDidMount: function(args) {
@@ -100,26 +117,6 @@ var SoCalendar = React.createClass({
     return <span key={key} className='dayCell' style={style}>
       <Day day={this.state.calendar.days[calendarIdx]} blockingNSFW={true} />
     </span>;
-  },
-
-  _handleDirection: function(direction) {
-    switch(direction) {
-      case 'double-left':
-        Actions.setBeginning();
-        break;
-
-      case 'left':
-        this._switchDay(false);
-        break;
-
-      case 'right':
-        this._switchDay(true);
-        break;
-
-      case 'double-right':
-        Actions.setEnd();
-        break;
-    }
   },
 
   render : function(){
