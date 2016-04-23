@@ -14,19 +14,20 @@ Heavily under development. Don't judge me yet.
 - [x] Create ability to move from one cell to another
 - [x] Less Garbage UI
 - [x] Animations
-- [ ] Deploy with fake data
-- [ ] Authentication
-- [ ] Deploy Auth, test
+- [x] Deploy with fake data
 - [ ] Truly Majestic UI
-- [ ] Seed with real data, deploy
+- [x] Seed with real data, deploy
 - [ ] Profit
 
 ### Iteration 2
-- [ ] update calendar
-- [ ] Complete with route, editor and shit
+- [ ] Authentication
+- [ ] Deploy Auth, test
+- [ ] Fully support NSFW
 
 ### Iteration 3
 - [ ] create new calendar
+- [ ] update calendar route, complete with editor
 
 ### Iteration 4
 - [ ] handle new users and auth
+- [ ] create new calendar route
