@@ -26,7 +26,7 @@ var Store = flux.createStore({
             if (persistentIdx) {
               this._setCalendarIdx(persistentIdx);
             }
-          } catch() {
+          } catch(e) {
             // Swallow the error
           }
         }
@@ -54,7 +54,7 @@ var Store = flux.createStore({
     if (getIsBrowser()) {
       try {
         localStorage.setItem(PERSISTENT_HIGHEST_INDEX_KEY, State.highestVisitedIdx);
-      } catch () {
+      } catch (e) {
         // Swallow the error
       }
     }
