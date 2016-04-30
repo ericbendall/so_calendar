@@ -8,9 +8,11 @@ var fs = require('fs');
 var mongoose = require('mongoose');
 
 var Calendar = require('./server/models/calendar.js');
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/so_calendar';
+
 
 // Set up mongo db connection
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(MONGODB_URI);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error:'));
 db.once('open', function() {

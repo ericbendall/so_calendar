@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Calendar = require('./models/calendar.js');
 
 var mongoose = require('mongoose');
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/so_calendar';
 
 
 var seed = function() {
@@ -9,8 +10,7 @@ var seed = function() {
   return new Promise (function(resolve, reject){
     // Set up mongo db connection
     try {
-      // process.env.TIMES = 'mongodb://localhost/so_calendar'
-      mongoose.connect(process.env.MONGODB_URI);
+      mongoose.connect(MONGODB_URI);
       var db = mongoose.connection;
       db.on('error', reject);
       db.once('open', function() {
