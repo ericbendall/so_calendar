@@ -25,7 +25,6 @@
     "pico-router": "^1.1.0",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
-    "react-tween-state": "^0.1.4",
     "vitreum": "^3.1.3"
   }
 }
