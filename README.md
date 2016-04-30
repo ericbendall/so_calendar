@@ -31,3 +31,10 @@ Heavily under development. Don't judge me yet.
 ### Iteration 4
 - [ ] handle new users and auth
 - [ ] create new calendar route
+
+
+## Iteration 5
+- [ ] Tablet canvas support
+- [ ] Photo suppport
+- [ ] Grid view
+- [ ] Month Minimap
