@@ -15,8 +15,10 @@ Heavily under development. Don't judge me yet.
 - [x] Less Garbage UI
 - [x] Animations
 - [x] Deploy with fake data
-- [ ] Truly Majestic UI
+- [x] Truly Majestic UI
 - [x] Seed with real data, deploy
+- [ ] Responsive
+- [ ] Support Touch Devices
 - [ ] Profit
 
 ### Iteration 2
