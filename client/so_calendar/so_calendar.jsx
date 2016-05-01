@@ -98,12 +98,8 @@ var SoCalendar = React.createClass({
       return;
     }
 
-    var leftPercentage = 50 + Math.floor(33* dayOffset);
-    var style = {
-      left: leftPercentage + '%'
-    };
-
-    return <span key={key} className='dayCell' style={style}>
+    var className = 'dayCell cellOffset_' + dayOffset;
+    return <span key={key} className={className}>
       <Day day={this.state.calendar.days[calendarIdx]} blockingNSFW={true} />
     </span>;
   },

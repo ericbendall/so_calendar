@@ -1,4 +1,23 @@
-  html, body, #reactContainer, .so-calendar{
+@dayCellMargin: 15px;
+@dayWidth-desktop: ~"calc( (100% - (@{dayCellMargin}*4)) / 3)";
+
+@dayWidth-tablet: 60%;
+@dayWidth-phone: ~"calc(100% - (@{dayCellMargin} * 2))";
+
+.offsetLeft-desktop(@offset) {
+  // (100% - (@{dayCellMargin}*4)) / 3) === @dayWidth-desktop
+  left: ~"calc(( ( (100% - (@{dayCellMargin}*4)) / 3)  * (1 + @{offset})) + (@{dayCellMargin} * (2 + @{offset})))";
+}
+
+.offsetLeft-tablet(@offset) {
+  left: ~"calc( (20% + @{dayCellMargin}) + (@{offset} * (@{dayWidth-tablet} + @{dayCellMargin})) )";
+}
+
+.offsetLeft-phone(@offset) {
+  left: ~"calc( @{dayCellMargin} + (@{offset} * (100% + @{dayCellMargin})))";
+}
+
+html, body, #reactContainer, .so-calendar{
   height : 100%;
   box-sizing: border-box;
   font-family: Lato;
@@ -13,7 +32,7 @@
 }
 
 .calendar {
-  height: 604px; // 600px + border I think
+  height: 100%; // Flexbox will take care of this
   width: 100%;
   overflow: hidden;
   //margin: @calendar-padding;
@@ -35,9 +54,102 @@
 
 .dayCell {
   transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  width: 30%;
+  width: @dayWidth-desktop;
+  margin-right: @dayCellMargin;
   height: 90%;
   display: inline-block;
   position: absolute;
-  transform: translate(-50%, 0%);
+
+  &.cellOffset_-3 {
+    .offsetLeft-desktop(-3);
+  }
+
+  &.cellOffset_-2 {
+    .offsetLeft-desktop(-2);
+  }
+
+  &.cellOffset_-1 {
+    .offsetLeft-desktop(-1);
+  }
+
+  &.cellOffset_0 {
+    .offsetLeft-desktop(0);
+  }
+
+  &.cellOffset_1 {
+    .offsetLeft-desktop(1);
+  }
+
+  &.cellOffset_2 {
+    .offsetLeft-desktop(2);
+  }
+
+  &.cellOffset_3 {
+    .offsetLeft-desktop(3);
+  }
+
+  // Tablet
+  @media (max-width: 1023px) {
+    width: @dayWidth-tablet;
+    &.cellOffset_-3 {
+      .offsetLeft-tablet(-3);
+    }
+
+    &.cellOffset_-2 {
+      .offsetLeft-tablet(-2);
+    }
+
+    &.cellOffset_-1 {
+      .offsetLeft-tablet(-1);
+    }
+
+    &.cellOffset_0 {
+      .offsetLeft-tablet(0);
+    }
+
+    &.cellOffset_1 {
+      .offsetLeft-tablet(1);
+    }
+
+    &.cellOffset_2 {
+      .offsetLeft-tablet(2);
+    }
+
+    &.cellOffset_3 {
+      .offsetLeft-tablet(3);
+    }
+  }
+
+  // Mobile Phone
+  @media (max-width: 425px) {
+    width: @dayWidth-phone;
+    &.cellOffset_-3 {
+      .offsetLeft-phone(-3);
+    }
+
+    &.cellOffset_-2 {
+      .offsetLeft-phone(-2);
+    }
+
+    &.cellOffset_-1 {
+      .offsetLeft-phone(-1);
+    }
+
+    &.cellOffset_0 {
+      .offsetLeft-phone(0);
+    }
+
+    &.cellOffset_1 {
+      .offsetLeft-phone(1);
+    }
+
+    &.cellOffset_2 {
+      .offsetLeft-phone(2);
+    }
+
+    &.cellOffset_3 {
+      .offsetLeft-phone(3);
+    }
+  }
+
 }
