@@ -8,7 +8,7 @@
     "start": "gulp fresh && gulp"
   },
   "engines": {
-    "node" : "4.4.1"
+    "node": "4.4.1"
   },
   "author": "Eric Bendall",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "classnames": "^2.2.3",
     "express": "^4.13.4",
     "gulp": "^3.9.1",
+    "hammerjs": "^2.0.8",
     "isomorphic-fetch": "^2.2.0",
     "lodash": "^4.6.1",
     "moment": "^2.12.0",

@@ -23,11 +23,13 @@ var gulp = vitreumTasks(gulp, {
   libs: [
     "react",
     "react-dom",
+    "hammerjs",
     "isomorphic-fetch",
     "lodash",
+    "moment",
     "classnames",
     "pico-flux",
-    "pico-router"
+    "pico-router",
   ],
   clientLibs: [
 
