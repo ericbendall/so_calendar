@@ -24,6 +24,10 @@ html, body, #reactContainer, .so-calendar{
   background-color: #FFF9F4;
 }
 
+body {
+  font-size: 1.5rem;
+}
+
 .so-calendar {
   width: 100%;
   display: flex;
@@ -87,9 +91,18 @@ html, body, #reactContainer, .so-calendar{
   &.cellOffset_3 {
     .offsetLeft-desktop(3);
   }
+}
 
-  // Tablet
-  @media (max-width: 1023px) {
+
+
+// Tablet
+@media (max-width: 1023px) {
+
+  body {
+    font-size: 1.0rem;
+  }
+
+  .dayCell {
     width: @dayWidth-tablet;
     &.cellOffset_-3 {
       .offsetLeft-tablet(-3);
@@ -119,9 +132,16 @@ html, body, #reactContainer, .so-calendar{
       .offsetLeft-tablet(3);
     }
   }
+}
 
-  // Mobile Phone
-  @media (max-width: 425px) {
+// Mobile Phone
+@media (max-width: 425px) {
+
+  body {
+    font-size: 0.75rem;
+  }
+
+  .dayCell {
     width: @dayWidth-phone;
     &.cellOffset_-3 {
       .offsetLeft-phone(-3);
@@ -151,5 +171,4 @@ html, body, #reactContainer, .so-calendar{
       .offsetLeft-phone(3);
     }
   }
-
 }
