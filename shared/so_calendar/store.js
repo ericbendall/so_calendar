@@ -49,7 +49,7 @@ var Store = flux.createStore({
   },
 
   _setCalendarIdx: function(idx) {
-    State.calendarIdx = idx;
+    State.calendarIdx = Math.max(0, Math.min(idx, State.calendar.days.length - 1));
     State.highestVisitedIdx = Math.max(State.highestVisitedIdx, State.calendarIdx);
     if (getIsBrowser()) {
       try {
