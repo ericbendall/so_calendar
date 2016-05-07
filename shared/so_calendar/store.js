@@ -40,6 +40,24 @@ var Store = flux.createStore({
     this._setCalendarIdx(args);
   },
 
+  BACK_ONE: function() {
+    const idx = State.calendarIdx;
+    if ( idx <= 0 ) {
+      return;
+    }
+
+    this._setCalendarIdx(State.calendarIdx - 1);
+  },
+
+  FORWARD_ONE: function() {
+    const idx = State.calendarIdx;
+    if ( State.calendar.days.length <= idx) {
+      return;
+    }
+
+    this._setCalendarIdx(State.calendarIdx + 1);
+  },
+
   SET_CALENDAR_END: function() {
     this._setCalendarIdx(State.calendar.days.length ? State.calendar.days.length - 1 : 0);
   }

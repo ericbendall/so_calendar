@@ -10,6 +10,14 @@ var Actions = {
     dispatch('SET_CALENDAR_IDX', newCalendarIdx);
   },
 
+  backOneDay: function() {
+    dispatch('BACK_ONE');
+  },
+
+  forwardOneDay: function() {
+    dispatch('FORWARD_ONE');
+  },
+
   setBeginning: function() {
     dispatch('SET_CALENDAR_IDX', 0);
   },
